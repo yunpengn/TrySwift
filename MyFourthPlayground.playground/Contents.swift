@@ -57,7 +57,30 @@ extension Double {
 print((-0.9).absoluteValue)
 print(-0.9.absoluteValue)
 
+// Next, let's talk about error handling
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
+}
 
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never Has Toner" {
+        throw PrinterError.noToner
+    }
+    
+    return "Job Sent"
+}
+
+do {
+    let printResult = try send(job: 12, toPrinter: "Never Has Toner")
+    print(printResult)
+} catch {
+    print(error)
+}
+
+let newPrintResult = try? send(job: 45, toPrinter: "Never Has Toner")
+print(newPrintResult == nil)
 
 
 
