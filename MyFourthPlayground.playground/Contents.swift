@@ -82,6 +82,13 @@ do {
 let newPrintResult = try? send(job: 45, toPrinter: "Never Has Toner")
 print(newPrintResult == nil)
 
+var myArray = [Int]()
+print(myArray.count)
+print(myArray.popLast() == nil)
+
+let myNewArray = myArray
+myArray.append(1)
+print(myNewArray.count == 0)
 
 
 
